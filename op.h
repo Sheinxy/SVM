@@ -1,0 +1,175 @@
+#ifndef _OP_H
+#define _OP_H
+
+#include "cpu.h"
+
+extern void (*op_codes[256])(CPU* cpu);
+
+void op_undef(CPU* cpu);
+void op_00_add(CPU* cpu);
+void op_01_add(CPU* cpu);
+void op_02_add(CPU* cpu);
+void op_03_add(CPU* cpu);
+void op_04_add(CPU* cpu);
+void op_05_add(CPU* cpu);
+void op_08_or(CPU* cpu);
+void op_09_or(CPU* cpu);
+void op_0A_or(CPU* cpu);
+void op_0B_or(CPU* cpu);
+void op_0C_or(CPU* cpu);
+void op_0D_or(CPU* cpu);
+void op_10_adc(CPU* cpu);
+void op_11_adc(CPU* cpu);
+void op_12_adc(CPU* cpu);
+void op_13_adc(CPU* cpu);
+void op_14_adc(CPU* cpu);
+void op_15_adc(CPU* cpu);
+void op_18_sbb(CPU* cpu);
+void op_19_sbb(CPU* cpu);
+void op_1A_sbb(CPU* cpu);
+void op_1B_sbb(CPU* cpu);
+void op_1C_sbb(CPU* cpu);
+void op_1D_sbb(CPU* cpu);
+void op_xx_push(CPU* cpu); // 06 / 0E / 16 / 1E
+void op_xx_pop(CPU* cpu);  // 07 / 0F / 17 / 1F
+void op_20_and(CPU* cpu);
+void op_21_and(CPU* cpu);
+void op_22_and(CPU* cpu);
+void op_23_and(CPU* cpu);
+void op_24_and(CPU* cpu);
+void op_25_and(CPU* cpu);
+void op_27_baa(CPU* cpu);
+void op_28_sub(CPU* cpu);
+void op_29_sub(CPU* cpu);
+void op_2A_sub(CPU* cpu);
+void op_2B_sub(CPU* cpu);
+void op_2C_sub(CPU* cpu);
+void op_2D_sub(CPU* cpu);
+void op_2F_das(CPU* cpu);
+void op_30_xor(CPU* cpu);
+void op_31_xor(CPU* cpu);
+void op_32_xor(CPU* cpu);
+void op_33_xor(CPU* cpu);
+void op_34_xor(CPU* cpu);
+void op_35_xor(CPU* cpu);
+void op_37_aaa(CPU* cpu);
+void op_38_cmp(CPU* cpu);
+void op_39_cmp(CPU* cpu);
+void op_3A_cmp(CPU* cpu);
+void op_3B_cmp(CPU* cpu);
+void op_3C_cmp(CPU* cpu);
+void op_3D_cmp(CPU* cpu);
+void op_3F_aas(CPU* cpu);
+void op_4b_inc(CPU* cpu); // 40 - 47
+void op_4w_dec(CPU* cpu); // 48 - 4F
+void op_5b_push(CPU* cpu); // 50 - 57
+void op_5w_pop(CPU* cpu); // 58 - 5F
+void op_70_jo(CPU* cpu);
+void op_71_jno(CPU* cpu);
+void op_72_jb(CPU* cpu);
+void op_73_jnb(CPU* cpu);
+void op_74_je(CPU* cpu);
+void op_75_jne(CPU* cpu);
+void op_76_jbe(CPU* cpu);
+void op_77_jnbe(CPU* cpu);
+void op_78_js(CPU* cpu);
+void op_79_jns(CPU* cpu);
+void op_7A_jp(CPU* cpu);
+void op_7B_jnp(CPU* cpu);
+void op_7C_jl(CPU* cpu);
+void op_7D_jnl(CPU* cpu);
+void op_7E_jle(CPU* cpu);
+void op_7F_jnle(CPU* cpu);
+void op_80(CPU* cpu);
+void op_81(CPU* cpu);
+void op_82(CPU* cpu);
+void op_83(CPU* cpu);
+void op_84_test(CPU* cpu);
+void op_85_test(CPU* cpu);
+void op_86_xchg(CPU* cpu);
+void op_87_xchg(CPU* cpu);
+void op_88_mov(CPU* cpu);
+void op_89_mov(CPU* cpu);
+void op_8A_mov(CPU* cpu);
+void op_8B_mov(CPU* cpu);
+void op_8C_mov(CPU* cpu);
+void op_8D_lea(CPU* cpu);
+void op_8E_mov(CPU* cpu);
+void op_8F(CPU* cpu);
+void op_90_nop(CPU* cpu);
+void op_9b_xchg(CPU* cpu); // 91 - 97;
+void op_98_cbw(CPU* cpu);
+void op_99_cwd(CPU* cpu);
+void op_9B_wait(CPU* cpu);
+void op_9C_pushf(CPU* cpu);
+void op_9D_popf(CPU* cpu);
+void op_9E_sahf(CPU* cpu);
+void op_9F_lahf(CPU* cpu);
+void op_A0_mov(CPU* cpu);
+void op_A1_mov(CPU* cpu);
+void op_A2_mov(CPU* cpu);
+void op_A3_mov(CPU* cpu);
+void op_A4_movs(CPU* cpu);
+void op_A5_movs(CPU* cpu);
+void op_A6_cmps(CPU* cpu);
+void op_A7_cmps(CPU* cpu);
+void op_A8_test(CPU* cpu);
+void op_A9_test(CPU* cpu);
+void op_AA_stos(CPU* cpu);
+void op_AB_stos(CPU* cpu);
+void op_AC_lods(CPU* cpu);
+void op_AD_lods(CPU* cpu);
+void op_AE_scas(CPU* cpu);
+void op_AF_scas(CPU* cpu);
+void op_Bb_mov(CPU* cpu); // B0 - B7
+void op_Bw_mov(CPU* cpu); // B8 - BF
+void op_C2_ret(CPU* cpu);
+void op_C3_ret(CPU* cpu);
+void op_C4_les(CPU* cpu);
+void op_C5_lds(CPU* cpu);
+void op_C6_mov(CPU* cpu);
+void op_C7_mov(CPU* cpu);
+void op_CB_retf(CPU* cpu);
+void op_CC_int3(CPU* cpu);
+void op_CD_int(CPU* cpu);
+void op_CE_into(CPU* cpu);
+void op_CF_iret(CPU* cpu);
+void op_D0(CPU* cpu);
+void op_D1(CPU* cpu);
+void op_D2(CPU* cpu);
+void op_D3(CPU* cpu);
+void op_D4_aam(CPU* cpu);
+void op_D5_aad(CPU* cpu);
+void op_D7_xlat(CPU* cpu);
+void op_E0_loop(CPU* cpu);
+void op_E1_loop(CPU* cpu);
+void op_E2_loop(CPU* cpu);
+void op_E3_jcxz(CPU* cpu);
+void op_E4_in(CPU* cpu);
+void op_E5_in(CPU* cpu);
+void op_E6_out(CPU* cpu);
+void op_E7_out(CPU* cpu);
+void op_E8_call(CPU* cpu);
+void op_E9_jmp(CPU* cpu);
+void op_EA_jmpf(CPU* cpu);
+void op_EB_jmp(CPU* cpu);
+void op_EC_in(CPU* cpu);
+void op_ED_in(CPU* cpu);
+void op_EE_out(CPU* cpu);
+void op_EF_out(CPU* cpu);
+void op_F2_rep(CPU* cpu);
+void op_F3_rep(CPU* cpu);
+void op_F4_hlt(CPU* cpu);
+void op_F5_cmc(CPU* cpu);
+void op_F6(CPU* cpu);
+void op_F7(CPU* cpu);
+void op_F8_clc(CPU* cpu);
+void op_F9_stc(CPU* cpu);
+void op_FA_cli(CPU* cpu);
+void op_FB_sti(CPU* cpu);
+void op_FC_cld(CPU* cpu);
+void op_FD_std(CPU* cpu);
+void op_FE(CPU* cpu);
+void op_FF(CPU* cpu);
+
+#endif
